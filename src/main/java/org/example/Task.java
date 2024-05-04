@@ -40,19 +40,20 @@ public class Task {
 
         return duration;
     }
-    public static String promptDevNam(){
-        System.out.print("\nEnter Developer Name: ");
-        Scanner scanner = new Scanner(System.in);
-        String DevName = scanner.nextLine();
-
-        return DevName;
-    }
 
     public static String createTaskID(String devName, String taskName,int taskNumber){
-        int len = devName.length();
+        int SpaceNumber = devName.indexOf(" ");
+        String devF;
+        if(SpaceNumber != -1){
+            devF = devName.substring(0, SpaceNumber);
+        }else{
+            devF = devName;
+        }
+
+        int len = devF .length();
         String a = taskName.substring(0,2);
         int c = taskNumber;
-        String b = devName.substring(len-3,len);
+        String b = devF.substring(len-3,len);
         return String.format("%s:%s:%s",a,c,b);
 
     }

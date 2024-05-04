@@ -7,6 +7,9 @@ public class Users {
     String _Password;
     String _fName;
     String _lName;
+    Task[] _tasks;
+    int _taskCounter;
+    static Users _loggedUsers;
 //    static Task task;
 
     public Users(String username, String password, String name, String surname) {
@@ -14,7 +17,10 @@ public class Users {
         this._Password = password;
         this._fName = name;
         this._lName = surname;
+        this._tasks = new Task[10];
+        this._taskCounter = 0;
     }
+
 
     static int Length = 10;
     static int counter = 0;
@@ -59,6 +65,14 @@ public class Users {
             }
         }
         return null;
+    }
+
+    public static Users getLoggedInUsers(){
+        return _loggedUsers;
+    }
+
+    public static void setLoggedInUser(Users user){
+        _loggedUsers = user;
     }
 }
 

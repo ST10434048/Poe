@@ -15,7 +15,7 @@ public class TaskManager {
            System.out.println("Invalid task description");
            newTask();
        }
-       String devName = Task.promptDevNam();
+       String devName = Users.getLoggedInUsers()._fName;
        String taskID = Task.createTaskID(devName, taskName,taskNumber);
        TaskMenu.Status status = TaskMenu.promptStatus();
        Task task = new Task(taskName,taskNumber,taskDuration,description,devName,taskID,status);
@@ -72,5 +72,7 @@ public class TaskManager {
         //returns the total to be displayed
 
     }
+
+
 
 }

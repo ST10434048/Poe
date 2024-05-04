@@ -25,6 +25,8 @@ public class Login {
         if(returnLoginStatus(username,password)){
             System.out.println("Login Successful");
             while(returnLoginStatus(username,password)){
+                Users user = Users.findUserByName(username);
+                Users.setLoggedInUser(user);
                 TaskMenu.promptKanbanChoice();
             }
         }else {
