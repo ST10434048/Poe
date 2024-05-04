@@ -75,7 +75,58 @@ public class TaskMenu {
         }
         return chosen;
     }
+    enum Report{
+        Display_Done_Tasks,
+        Display_Longest_Task,
+        Search_For_Task_By_Name,
+        Search_For_Task_By_Developer,
+        Remove_Task_By_Name,
+        Display_All_Tasks
+    }
+
+    static void showReportItems(){
+        System.out.println("\nStatuses: \n");
+        for (int x = 0; x < Report.values().length; x++) {
+            System.out.println("(" + x + ")" + Report.values()[x]);
+
+        }
+        System.out.print("Insert Choice here: ");
+    }
+
+    static void promptReport() {
+        showReportItems();
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNextInt()) {
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 0:
+                    TaskManager.showDoneTasks();
+                    break;
+                case 1:
+                    TaskManager.showLongestTask();
+                    break;
+                case 2:
+                    TaskManager.searchTasksByName();
+                    break;
+                case 3:
+                    TaskManager.searchTasksByDevName();
+                    break;
+                case 4:
+                    TaskManager.deleteTaskByName();
+                    break;
+                case 5:
+                    TaskManager.fullReport();
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+
+            }
+        } else {
+            System.out.println("Invalid Choice");
+            promptReport();
+        }
 
 
-
+    }
 }
